@@ -1,0 +1,50 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Bayou Energy
+providerId: bayou-energy
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Utility Data
+- Energy
+- Utility Bills
+- Interval Data
+- Metering
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Bayou Energy exposes a REST API secured with HTTP Basic authentication. The
+  public documentation does not publish specific request-per-minute or
+  request-per-day rate-limit values. Bayou recommends webhooks over polling for
+  status changes in production, which reduces request volume against the
+  customer, bills, and intervals endpoints. Specific rate-limit thresholds are
+  not reconciled in this artifact.
+notes: >-
+  Verify any published or contractual rate limits with Bayou support during
+  reconciliation; prefer webhooks (bills_ready, intervals_ready) over polling to
+  stay within reasonable request volumes.
+sources:
+- https://docs.bayou.energy/docs/quickstart
+- https://docs.bayou.energy/reference
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Bayou does not publish explicit per-minute or per-day request limits.
+policies:
+- name: Prefer Webhooks Over Polling
+  description: >-
+    Production integrations should subscribe to webhooks (bills_ready,
+    intervals_ready, new_bill) instead of polling customer status to minimize
+    request volume.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

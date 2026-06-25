@@ -1,0 +1,79 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Bayou Energy
+providerId: bayou-energy
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Utility Data
+- Energy
+- Utility Bills
+- Interval Data
+- Metering
+- Plans
+description: >-
+  Bayou Energy uses transparent usage-based pricing tied to the meters you
+  unlock data for. The first ten unique meters are free; after the eleventh
+  unlock, usage-based billing applies to all meters at $2 per meter per utility
+  bill, for both electric and gas meters. A test mode with a sandbox utility
+  (speculoos_power) is available for development. Customers are only charged
+  once per unique meter unlock, even across multiple Bayou accounts.
+notes: >-
+  Pricing reflects Bayou's published pricing overview; verify the current
+  per-meter rate and free-meter allowance on the Bayou pricing page during
+  reconciliation.
+sources:
+- https://docs.bayou.energy/docs/pricing-overview
+- https://www.bayou.energy/
+plans:
+- id: bayou-free-meters
+  name: Free Meters
+  type: free
+  description: >-
+    The first ten unique meters you unlock data for are completely free, with
+    full access to bills and interval data.
+  entries:
+  - label: Free Meter Unlocks
+    name: free_meters
+    type: free
+    metric: meters
+    limit: 10
+    timeFrame: lifetime
+    geo: us
+    unit: 1
+    price: $0.00
+    userMultiplied: false
+  elements:
+  - name: Customers
+  - name: Bills
+  - name: Intervals
+  - name: Utilities
+- id: bayou-usage
+  name: Usage-Based
+  type: usage
+  description: >-
+    After the free allowance, usage-based billing activates for all meters at
+    $2 per meter per utility bill, billed monthly in arrears.
+  entries:
+  - label: Meter per Bill
+    name: meter_per_bill
+    type: usage
+    metric: meter_bills
+    limit: -1
+    timeFrame: month
+    geo: us
+    unit: 1
+    price: $2 per meter per utility bill
+    userMultiplied: false
+  elements:
+  - name: Customers
+  - name: Bills
+  - name: Intervals
+  - name: Meters
+  - name: Utilities
+  - name: Webhooks
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

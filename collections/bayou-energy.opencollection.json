@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bayou Energy API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiKey}}",
+      "password": ""
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/customers"
+          },
+          "docs": "Retrieve the list of customers created on your account."
+        },
+        {
+          "info": {
+            "name": "Create a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bayou.energy/api/v2/customers",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"utility\": \"speculoos_power\",\n  \"email\": \"customer@example.com\"\n}"
+            }
+          },
+          "docs": "Create a customer for a given utility; the response includes an onboarding link."
+        },
+        {
+          "info": {
+            "name": "Retrieve a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/customers/{id}"
+          },
+          "docs": "Retrieve a customer, including has_filled_credentials, bills_are_ready, and intervals_are_ready."
+        },
+        {
+          "info": {
+            "name": "Update a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://bayou.energy/api/v2/customers/{id}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"email\": \"customer@example.com\"\n}"
+            }
+          },
+          "docs": "Update a customer's attributes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bills",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a customer's bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/customers/{id}/bills"
+          },
+          "docs": "Retrieve all bills discovered for a customer."
+        },
+        {
+          "info": {
+            "name": "Upload a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bayou.energy/api/v2/bills",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload a new bill for processing."
+        },
+        {
+          "info": {
+            "name": "Retrieve a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/bills/{id}"
+          },
+          "docs": "Retrieve a specific bill by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://bayou.energy/api/v2/bills/{id}",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific bill by its identifier."
+        },
+        {
+          "info": {
+            "name": "Unlock a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bayou.energy/api/v2/bills/{id}/unlock"
+          },
+          "docs": "Unlock a bill's data, entirely or partially."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Intervals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a customer's interval data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/customers/{id}/intervals"
+          },
+          "docs": "Retrieve interval meter data for a customer, organized by meter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported utilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/utilities"
+          },
+          "docs": "Retrieve all supported utilities, including coverage, availability, and performance."
+        },
+        {
+          "info": {
+            "name": "Retrieve a utility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/utilities/{id}"
+          },
+          "docs": "Retrieve details for a specific supported utility."
+        }
+      ]
+    }
+  ]
+}

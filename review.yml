@@ -1,0 +1,68 @@
+aid: bayou-energy
+name: Bayou Energy
+review:
+  question: Does Bayou Energy expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Bayou Energy's asynchronous integration
+    surface is HTTP webhooks (callbacks to a subscriber URL), not a streaming
+    transport. Bayou does not document Server-Sent Events (SSE) or WebSocket
+    streaming endpoints, so there is no SSE or WebSocket channel to model.
+findings:
+  summary: |
+    Bayou Energy does not publish a documented public WebSocket API. The
+    platform exposes only a REST (HTTPS) API under
+    https://bayou.energy/api/v2, secured with HTTP Basic authentication (API
+    key as username, empty password). Asynchronous notifications are delivered
+    via HTTP webhooks - the documented events are
+    customer_has_filled_credentials, customer_must_reauthenticate, new_bill,
+    updated_bill, new_unparsed_bill, bills_ready, and intervals_ready. No
+    realtime, bidirectional WebSocket (ws:// or wss://) endpoint and no
+    Server-Sent Events stream are documented for customers, bills, intervals,
+    meters, or utilities.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://bayou.energy/api/v2
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: HTTP callbacks to a subscriber URL for data-availability and credential events. Not a streaming transport.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Bayou's API reference or product documentation as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://bayou.energy/api/v2/customers
+    - POST   https://bayou.energy/api/v2/customers
+    - GET    https://bayou.energy/api/v2/customers/{id}
+    - PATCH  https://bayou.energy/api/v2/customers/{id}
+    - GET    https://bayou.energy/api/v2/customers/{id}/bills
+    - GET    https://bayou.energy/api/v2/customers/{id}/intervals
+    - POST   https://bayou.energy/api/v2/bills
+    - GET    https://bayou.energy/api/v2/bills/{id}
+    - PATCH  https://bayou.energy/api/v2/bills/{id}
+    - POST   https://bayou.energy/api/v2/bills/{id}/unlock
+    - GET    https://bayou.energy/api/v2/utilities
+    - GET    https://bayou.energy/api/v2/utilities/{id}
+sources:
+  - url: https://docs.bayou.energy/
+    type: Documentation
+    note: Documentation hub; lists REST base URL and HTTP Basic auth, no WebSocket mentioned.
+  - url: https://docs.bayou.energy/docs/quickstart
+    type: Documentation
+    note: Quickstart describes create-customer, link-credentials, fetch bills/intervals over REST with polling or webhooks.
+  - url: https://docs.bayou.energy/reference
+    type: APIReference
+    note: All documented endpoints are HTTPS REST; asynchronous delivery is via HTTP webhooks.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Bayou's only asynchronous
+    surface is HTTP webhooks, which are modeled as a Webhooks API entry in
+    apis.yml rather than as an AsyncAPI streaming document.
