@@ -118,6 +118,10 @@ apis:
     and intervals_ready - so production integrations react to data availability instead
     of polling.
 common:
+- type: DomainSecurity
+  url: security/bayou-energy-domain-security.yml
+- type: Authentication
+  url: authentication/bayou-energy-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/bayouenergy
 - type: Website
@@ -130,6 +134,8 @@ common:
   url: rate-limits/bayou-energy-rate-limits.yml
 - type: FinOps
   url: finops/bayou-energy-finops.yml
+- type: Blog
+  url: https://blog.bayou.energy/feed
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bayou-energy-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication. Use your API key as the username and leave the password
+    empty.
+  sources:
+  - openapi/bayou-energy-openapi.yml
