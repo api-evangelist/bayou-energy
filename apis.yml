@@ -118,6 +118,8 @@ apis:
     and intervals_ready - so production integrations react to data availability instead
     of polling.
 common:
+- type: AgenticAccess
+  url: agentic-access/bayou-energy-agentic-access.yml
 - type: DomainSecurity
   url: security/bayou-energy-domain-security.yml
 - type: Authentication
