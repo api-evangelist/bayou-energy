@@ -1,0 +1,77 @@
+openapi: 3.0.1
+info:
+  title: Bayou Energy Bills Intervals API
+  description: REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.
+  termsOfService: https://www.bayou.energy/
+  contact:
+    name: Bayou Energy Support
+    url: https://docs.bayou.energy/
+  version: '2.0'
+servers:
+- url: https://bayou.energy/api/v2
+security:
+- basicAuth: []
+tags:
+- name: Intervals
+paths:
+  /customers/{id}/intervals:
+    get:
+      operationId: getCustomerIntervals
+      tags:
+      - Intervals
+      summary: Retrieve a customer's interval data
+      description: Retrieve interval meter data for a customer, organized by meter. Poll until intervals_are_ready is true, or subscribe to the intervals_ready webhook.
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: The customer's interval data grouped by meter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntervalData'
+components:
+  schemas:
+    Interval:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+          description: Start timestamp of the interval.
+        end:
+          type: string
+          format: date-time
+          description: End timestamp of the interval.
+        net_consumption:
+          type: number
+          description: Net consumption recorded during the interval.
+    IntervalData:
+      type: object
+      properties:
+        meters:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              type:
+                type: string
+              intervals:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Interval'
+  parameters:
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      description: The customer identifier.
+      schema:
+        type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your API key as the username and leave the password empty.

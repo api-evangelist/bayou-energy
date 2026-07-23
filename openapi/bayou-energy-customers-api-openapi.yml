@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  title: Bayou Energy Bills Customers API
+  description: REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.
+  termsOfService: https://www.bayou.energy/
+  contact:
+    name: Bayou Energy Support
+    url: https://docs.bayou.energy/
+  version: '2.0'
+servers:
+- url: https://bayou.energy/api/v2
+security:
+- basicAuth: []
+tags:
+- name: Customers
+paths:
+  /customers:
+    get:
+      operationId: listCustomers
+      tags:
+      - Customers
+      summary: List customers
+      description: Retrieve the list of customers created on your account.
+      responses:
+        '200':
+          description: A list of customers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      operationId: createCustomer
+      tags:
+      - Customers
+      summary: Create a customer
+      description: Create a customer for a given utility. The response includes an onboarding link the customer uses to connect their utility credentials.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerRequest'
+      responses:
+        '201':
+          description: The created customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}:
+    get:
+      operationId: getCustomer
+      tags:
+      - Customers
+      summary: Retrieve a customer
+      description: Retrieve a customer, including status fields such as has_filled_credentials, bills_are_ready, and intervals_are_ready.
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: The requested customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    patch:
+      operationId: updateCustomer
+      tags:
+      - Customers
+      summary: Update a customer
+      description: Update a customer's attributes.
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerRequest'
+      responses:
+        '200':
+          description: The updated customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the customer.
+        utility:
+          type: string
+          description: The utility the customer is connecting.
+        email:
+          type: string
+          format: email
+        onboarding_link:
+          type: string
+          format: uri
+          description: Hosted link the customer uses to connect utility credentials.
+        has_filled_credentials:
+          type: boolean
+          description: Whether the customer has submitted their utility credentials.
+        bills_are_ready:
+          type: boolean
+          description: Whether initial bill discovery has completed.
+        intervals_are_ready:
+          type: boolean
+          description: Whether initial interval discovery has completed.
+        address:
+          $ref: '#/components/schemas/Address'
+    UpdateCustomerRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: Updated email address for the customer.
+    CreateCustomerRequest:
+      type: object
+      required:
+      - utility
+      properties:
+        utility:
+          type: string
+          description: The utility identifier the customer will connect (e.g. speculoos_power for testing).
+        email:
+          type: string
+          format: email
+          description: Optional email address for the customer.
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+  parameters:
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      description: The customer identifier.
+      schema:
+        type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your API key as the username and leave the password empty.

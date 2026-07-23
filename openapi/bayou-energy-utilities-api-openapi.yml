@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  title: Bayou Energy Bills Utilities API
+  description: REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.
+  termsOfService: https://www.bayou.energy/
+  contact:
+    name: Bayou Energy Support
+    url: https://docs.bayou.energy/
+  version: '2.0'
+servers:
+- url: https://bayou.energy/api/v2
+security:
+- basicAuth: []
+tags:
+- name: Utilities
+paths:
+  /utilities:
+    get:
+      operationId: listUtilities
+      tags:
+      - Utilities
+      summary: List supported utilities
+      description: Retrieve all supported utilities, including coverage, availability, and performance details.
+      responses:
+        '200':
+          description: A list of supported utilities.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Utility'
+  /utilities/{id}:
+    get:
+      operationId: getUtility
+      tags:
+      - Utilities
+      summary: Retrieve a utility
+      description: Retrieve details for a specific supported utility.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The utility identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested utility.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Utility'
+components:
+  schemas:
+    Utility:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        is_active:
+          type: boolean
+        bill_availability:
+          type: string
+        interval_availability:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your API key as the username and leave the password empty.

@@ -1,0 +1,191 @@
+openapi: 3.0.1
+info:
+  title: Bayou Energy Bills API
+  description: REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.
+  termsOfService: https://www.bayou.energy/
+  contact:
+    name: Bayou Energy Support
+    url: https://docs.bayou.energy/
+  version: '2.0'
+servers:
+- url: https://bayou.energy/api/v2
+security:
+- basicAuth: []
+tags:
+- name: Bills
+paths:
+  /customers/{id}/bills:
+    get:
+      operationId: getCustomerBills
+      tags:
+      - Bills
+      summary: Retrieve a customer's bills
+      description: Retrieve all bills discovered for a customer. Poll until the customer's bills_are_ready flag is true, or subscribe to the bills_ready webhook.
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: The customer's bills.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bill'
+  /bills:
+    post:
+      operationId: createBill
+      tags:
+      - Bills
+      summary: Upload a bill
+      description: Upload a new bill for processing.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bill'
+      responses:
+        '201':
+          description: The created bill.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+  /bills/{id}:
+    get:
+      operationId: getBill
+      tags:
+      - Bills
+      summary: Retrieve a bill
+      description: Retrieve a specific bill by its identifier.
+      parameters:
+      - $ref: '#/components/parameters/BillId'
+      responses:
+        '200':
+          description: The requested bill.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+    patch:
+      operationId: updateBill
+      tags:
+      - Bills
+      summary: Update a bill
+      description: Update a specific bill by its identifier.
+      parameters:
+      - $ref: '#/components/parameters/BillId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bill'
+      responses:
+        '200':
+          description: The updated bill.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+  /bills/{id}/unlock:
+    post:
+      operationId: unlockBill
+      tags:
+      - Bills
+      summary: Unlock a bill
+      description: Unlock a bill's data, entirely or partially. Unlocking meters drives usage-based billing once the free meter allowance is exhausted.
+      parameters:
+      - $ref: '#/components/parameters/BillId'
+      responses:
+        '200':
+          description: The unlocked bill.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+components:
+  parameters:
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      description: The customer identifier.
+      schema:
+        type: integer
+    BillId:
+      name: id
+      in: path
+      required: true
+      description: The bill identifier.
+      schema:
+        type: integer
+  schemas:
+    Meter:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+          description: Meter type, e.g. electric or gas.
+        billing_period_from:
+          type: string
+          format: date
+        billing_period_to:
+          type: string
+          format: date
+        consumption:
+          type: number
+          description: Consumption for the billing period.
+        tariff:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+    Bill:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the bill.
+        customer_id:
+          type: integer
+        statement_date:
+          type: string
+          format: date
+        billing_period_from:
+          type: string
+          format: date
+        billing_period_to:
+          type: string
+          format: date
+        account_number:
+          type: string
+        total_amount_due_cents:
+          type: integer
+          description: Total amount due on the bill, in cents.
+        address:
+          $ref: '#/components/schemas/Address'
+        meters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your API key as the username and leave the password empty.
