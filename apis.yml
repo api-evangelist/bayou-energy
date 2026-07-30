@@ -7,7 +7,20 @@ description: Bayou Energy provides a utility-bill and usage-data API that lets c
   utilities. Customers link their utility credentials through a hosted onboarding
   flow, and Bayou continuously fetches the full bill and interval history, exposing
   it through a REST API secured with HTTP Basic authentication.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bayou-energy.png
 tags:
 - Utility Data
 - Energy
@@ -18,105 +31,86 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: bayou-energy:customers
-  name: Bayou Energy Customers API
-  tags:
-  - Customers
-  - Connections
-  - Credentials
-  - Onboarding
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: bayou-energy:bayou-energy-bills-api
+  name: Bayou Energy Bills API
+  description: The Bills API from Bayou Energy — 4 operation(s) for bills.
   humanURL: https://docs.bayou.energy/reference
   baseURL: https://bayou.energy/api/v2
-  properties:
-  - url: https://docs.bayou.energy/docs/quickstart
-    type: Documentation
-  - url: https://docs.bayou.energy/reference
-    type: APIReference
-  - url: openapi/bayou-energy-openapi.yml
-    type: OpenAPI
-  description: Create and manage customers, generate a hosted onboarding link for the
-    customer to connect their utility credentials, and poll customer status fields
-    such as has_filled_credentials, bills_are_ready, and intervals_are_ready.
-- aid: bayou-energy:bills
-  name: Bayou Energy Bills API
   tags:
   - Bills
-  - Utility Bills
-  - Charges
-  - Tariffs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.bayou.energy/docs/data-provided-bills
-  baseURL: https://bayou.energy/api/v2
   properties:
-  - url: https://docs.bayou.energy/docs/data-provided-bills
-    type: Documentation
-  - url: https://docs.bayou.energy/reference
-    type: APIReference
-  - url: openapi/bayou-energy-openapi.yml
-    type: OpenAPI
-  description: Retrieve a customer's utility bills with account numbers, meters, tariffs,
-    billing periods, consumption, and itemized delivery and supply charges; upload,
-    update, and unlock bill data.
-- aid: bayou-energy:intervals
-  name: Bayou Energy Intervals API
-  tags:
-  - Intervals
-  - Usage
-  - Interval Data
-  - Meters
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.bayou.energy/docs/interval-data-availability
-  baseURL: https://bayou.energy/api/v2
-  properties:
-  - url: https://docs.bayou.energy/docs/interval-data-availability
-    type: Documentation
-  - url: https://docs.bayou.energy/reference
-    type: APIReference
-  - url: openapi/bayou-energy-openapi.yml
-    type: OpenAPI
-  description: Retrieve a customer's interval meter data organized by meter, returned
-    at 15-minute, hourly, or daily granularity depending on the utility, covering
-    the customer's available usage history.
-- aid: bayou-energy:meters
-  name: Bayou Energy Meters API
-  tags:
-  - Meters
-  - Utilities
-  - Coverage
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.bayou.energy/utilities
-  baseURL: https://bayou.energy/api/v2
-  properties:
-  - url: https://docs.bayou.energy/reference
-    type: Documentation
-  - url: https://docs.bayou.energy/reference
-    type: APIReference
-  - url: openapi/bayou-energy-openapi.yml
-    type: OpenAPI
-  description: Surface meter details across a customer's bills and intervals, and look
-    up supported utilities and their coverage, availability, and performance through
-    the utilities endpoints.
-- aid: bayou-energy:webhooks
-  name: Bayou Energy Webhooks API
-  tags:
-  - Webhooks
-  - Events
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - type: OpenAPI
+    url: openapi/bayou-energy-bills-api-openapi.yml
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/quickstart
+  - type: APIReference
+    url: https://docs.bayou.energy/reference
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/data-provided-bills
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/interval-data-availability
+  - type: Documentation
+    url: https://docs.bayou.energy/reference
+- aid: bayou-energy:bayou-energy-customers-api
+  name: Bayou Energy Customers API
+  description: The Customers API from Bayou Energy — 2 operation(s) for customers.
   humanURL: https://docs.bayou.energy/reference
   baseURL: https://bayou.energy/api/v2
+  tags:
+  - Customers
   properties:
-  - url: https://docs.bayou.energy/reference
-    type: Documentation
-  - url: https://docs.bayou.energy/reference
-    type: APIReference
-  - url: openapi/bayou-energy-openapi.yml
-    type: OpenAPI
-  description: Subscribe to event notifications - customer_has_filled_credentials,
-    customer_must_reauthenticate, new_bill, updated_bill, new_unparsed_bill, bills_ready,
-    and intervals_ready - so production integrations react to data availability instead
-    of polling.
+  - type: OpenAPI
+    url: openapi/bayou-energy-customers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/quickstart
+  - type: APIReference
+    url: https://docs.bayou.energy/reference
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/data-provided-bills
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/interval-data-availability
+  - type: Documentation
+    url: https://docs.bayou.energy/reference
+- aid: bayou-energy:bayou-energy-intervals-api
+  name: Bayou Energy Intervals API
+  description: The Intervals API from Bayou Energy — 1 operation(s) for intervals.
+  humanURL: https://docs.bayou.energy/reference
+  baseURL: https://bayou.energy/api/v2
+  tags:
+  - Intervals
+  properties:
+  - type: OpenAPI
+    url: openapi/bayou-energy-intervals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/quickstart
+  - type: APIReference
+    url: https://docs.bayou.energy/reference
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/data-provided-bills
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/interval-data-availability
+  - type: Documentation
+    url: https://docs.bayou.energy/reference
+- aid: bayou-energy:bayou-energy-utilities-api
+  name: Bayou Energy Utilities API
+  description: The Utilities API from Bayou Energy — 2 operation(s) for utilities.
+  humanURL: https://docs.bayou.energy/reference
+  baseURL: https://bayou.energy/api/v2
+  tags:
+  - Utilities
+  properties:
+  - type: OpenAPI
+    url: openapi/bayou-energy-utilities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/quickstart
+  - type: APIReference
+    url: https://docs.bayou.energy/reference
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/data-provided-bills
+  - type: Documentation
+    url: https://docs.bayou.energy/docs/interval-data-availability
+  - type: Documentation
+    url: https://docs.bayou.energy/reference
 common:
 - type: AgenticAccess
   url: agentic-access/bayou-energy-agentic-access.yml
