@@ -1,0 +1,20 @@
+{
+  "provider": "bayou-energy",
+  "sources": [
+    "bayou-energy-bills-api-openapi.yml",
+    "bayou-energy-customers-api-openapi.yml",
+    "bayou-energy-intervals-api-openapi.yml",
+    "bayou-energy-utilities-api-openapi.yml"
+  ],
+  "outputs": [
+    "bayou-energy-bills-api-openapi.yml",
+    "bayou-energy-customers-api-openapi.yml",
+    "bayou-energy-intervals-api-openapi.yml",
+    "bayou-energy-utilities-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
