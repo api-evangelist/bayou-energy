@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bayou Energy Bills Utilities API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported utilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/utilities"
+          },
+          "docs": "Retrieve all supported utilities, including coverage, availability, and performance details."
+        },
+        {
+          "info": {
+            "name": "Retrieve a utility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/utilities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The utility identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific supported utility."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

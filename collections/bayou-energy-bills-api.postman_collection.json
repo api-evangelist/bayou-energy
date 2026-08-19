@@ -1,0 +1,553 @@
+{
+  "item": [
+    {
+      "id": "78a5bdcf-6fcf-4bd5-b971-baec8fdd04b0",
+      "name": "Bills",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3405665-ebf4-4c64-9858-67e85ee73883",
+          "name": "Retrieve a customer's bills",
+          "request": {
+            "name": "Retrieve a customer's bills",
+            "description": {
+              "content": "Retrieve all bills discovered for a customer. Poll until the customer's bills_are_ready flag is true, or subscribe to the bills_ready webhook.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "bills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The customer identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "170957a4-7358-40d0-ac1a-8ec2d4e33cd4",
+              "name": "The customer's bills.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The customer identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3565,\n    \"customer_id\": 7099,\n    \"statement_date\": \"1968-08-15\",\n    \"billing_period_from\": \"2006-12-09\",\n    \"billing_period_to\": \"2021-09-29\",\n    \"account_number\": \"string\",\n    \"total_amount_due_cents\": 2521,\n    \"address\": {\n      \"line1\": \"string\",\n      \"line2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\"\n    },\n    \"meters\": [\n      {\n        \"id\": 6509,\n        \"type\": \"string\",\n        \"billing_period_from\": \"1966-12-29\",\n        \"billing_period_to\": \"1990-12-14\",\n        \"consumption\": 8732.754046540384,\n        \"tariff\": \"string\",\n        \"address\": {\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"zip\": \"string\"\n        }\n      },\n      {\n        \"id\": 8106,\n        \"type\": \"string\",\n        \"billing_period_from\": \"2018-04-22\",\n        \"billing_period_to\": \"2010-06-25\",\n        \"consumption\": 5226.01664566986,\n        \"tariff\": \"string\",\n        \"address\": {\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"zip\": \"string\"\n        }\n      }\n    ]\n  },\n  {\n    \"id\": 2059,\n    \"customer_id\": 996,\n    \"statement_date\": \"1977-04-03\",\n    \"billing_period_from\": \"1957-12-16\",\n    \"billing_period_to\": \"1991-03-10\",\n    \"account_number\": \"string\",\n    \"total_amount_due_cents\": 1771,\n    \"address\": {\n      \"line1\": \"string\",\n      \"line2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\"\n    },\n    \"meters\": [\n      {\n        \"id\": 6463,\n        \"type\": \"string\",\n        \"billing_period_from\": \"1976-04-30\",\n        \"billing_period_to\": \"2012-02-01\",\n        \"consumption\": 1700.4073429369791,\n        \"tariff\": \"string\",\n        \"address\": {\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"zip\": \"string\"\n        }\n      },\n      {\n        \"id\": 5702,\n        \"type\": \"string\",\n        \"billing_period_from\": \"1969-09-05\",\n        \"billing_period_to\": \"1952-05-27\",\n        \"consumption\": 3828.615229691178,\n        \"tariff\": \"string\",\n        \"address\": {\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"zip\": \"string\"\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a74e07f9-75fc-45da-a9d5-d626ee79fcea",
+          "name": "Upload a bill",
+          "request": {
+            "name": "Upload a bill",
+            "description": {
+              "content": "Upload a new bill for processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c8430ed-1c76-4a01-941a-82ee68db507e",
+              "name": "The created bill.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7192164b-b56e-4e2c-8ed4-f9c09ff58d6c",
+          "name": "Retrieve a bill",
+          "request": {
+            "name": "Retrieve a bill",
+            "description": {
+              "content": "Retrieve a specific bill by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The bill identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97f0575a-9657-47a0-a5c1-e1ffac15f93b",
+              "name": "The requested bill.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The bill identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "389150e8-8d11-4cc0-ae36-aa442742495d",
+          "name": "Update a bill",
+          "request": {
+            "name": "Update a bill",
+            "description": {
+              "content": "Update a specific bill by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The bill identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "140c9222-3c68-4d99-a071-3412b9d33f58",
+              "name": "The updated bill.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The bill identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9b2c3b9-1d08-4484-9858-a8f75dedfc41",
+          "name": "Unlock a bill",
+          "request": {
+            "name": "Unlock a bill",
+            "description": {
+              "content": "Unlock a bill's data, entirely or partially. Unlocking meters drives usage-based billing once the free meter allowance is exhausted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":id",
+                "unlock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The bill identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54344a08-d088-4437-8fef-675d1eab8be0",
+              "name": "The unlocked bill.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":id",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The bill identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"customer_id\": \"<integer>\",\n  \"statement_date\": \"<date>\",\n  \"billing_period_from\": \"<date>\",\n  \"billing_period_to\": \"<date>\",\n  \"account_number\": \"<string>\",\n  \"total_amount_due_cents\": \"<integer>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"meters\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"billing_period_from\": \"<date>\",\n      \"billing_period_to\": \"<date>\",\n      \"consumption\": \"<number>\",\n      \"tariff\": \"<string>\",\n      \"address\": {\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bayou.energy/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ca84f746-7eb1-439e-a8fd-b6a5c1f06d0b",
+    "name": "Bayou Energy Bills API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.\n\nContact Support:\n Name: Bayou Energy Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "item": [
+    {
+      "id": "7e58adea-bf5a-43bb-a057-e985209b6f24",
+      "name": "Intervals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56719d81-613a-425a-a3e9-1324c3e7cfca",
+          "name": "Retrieve a customer's interval data",
+          "request": {
+            "name": "Retrieve a customer's interval data",
+            "description": {
+              "content": "Retrieve interval meter data for a customer, organized by meter. Poll until intervals_are_ready is true, or subscribe to the intervals_ready webhook.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "intervals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The customer identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaacb30c-70bd-49ca-935b-99635340099c",
+              "name": "The customer's interval data grouped by meter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "intervals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The customer identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meters\": [\n    {\n      \"id\": 7838,\n      \"type\": \"string\",\n      \"intervals\": [\n        {\n          \"start\": \"1978-08-01T11:28:10.522Z\",\n          \"end\": \"1990-08-27T23:08:58.485Z\",\n          \"net_consumption\": 568.1884089929267\n        },\n        {\n          \"start\": \"2000-08-28T19:53:45.110Z\",\n          \"end\": \"2025-07-09T02:43:07.930Z\",\n          \"net_consumption\": 4827.013424297368\n        }\n      ]\n    },\n    {\n      \"id\": 3248,\n      \"type\": \"string\",\n      \"intervals\": [\n        {\n          \"start\": \"1953-11-08T14:34:44.614Z\",\n          \"end\": \"2015-03-29T23:19:27.192Z\",\n          \"net_consumption\": 5040.401358763867\n        },\n        {\n          \"start\": \"1954-01-27T04:54:59.037Z\",\n          \"end\": \"2013-03-17T05:49:02.471Z\",\n          \"net_consumption\": 8259.04263139125\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bayou.energy/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4fe31c77-634a-4f66-9c2d-ab43f811c737",
+    "name": "Bayou Energy Bills Intervals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.\n\nContact Support:\n Name: Bayou Energy Support",
+      "type": "text/plain"
+    }
+  }
+}

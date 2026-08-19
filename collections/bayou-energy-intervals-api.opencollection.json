@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bayou Energy Bills Intervals API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Intervals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a customer's interval data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/customers/:id/intervals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The customer identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve interval meter data for a customer, organized by meter. Poll until intervals_are_ready is true, or subscribe to the intervals_ready webhook."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

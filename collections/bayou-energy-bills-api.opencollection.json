@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bayou Energy Bills API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bills",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a customer's bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/customers/:id/bills",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The customer identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve all bills discovered for a customer. Poll until the customer's bills_are_ready flag is true, or subscribe to the bills_ready webhook."
+        },
+        {
+          "info": {
+            "name": "Upload a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bayou.energy/api/v2/bills",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload a new bill for processing."
+        },
+        {
+          "info": {
+            "name": "Retrieve a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bayou.energy/api/v2/bills/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The bill identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific bill by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://bayou.energy/api/v2/bills/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The bill identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific bill by its identifier."
+        },
+        {
+          "info": {
+            "name": "Unlock a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bayou.energy/api/v2/bills/:id/unlock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The bill identifier."
+              }
+            ]
+          },
+          "docs": "Unlock a bill's data, entirely or partially. Unlocking meters drives usage-based billing once the free meter allowance is exhausted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
