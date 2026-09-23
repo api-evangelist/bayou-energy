@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Bayou Energy Bills Intervals API
+  title: Bayou Energy Intervals API
   description: REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.
   termsOfService: https://www.bayou.energy/
   contact:

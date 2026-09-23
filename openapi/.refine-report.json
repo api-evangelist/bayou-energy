@@ -1,10 +1,7 @@
 {
   "provider": "bayou-energy",
   "sources": [
-    "bayou-energy-bills-api-openapi.yml",
-    "bayou-energy-customers-api-openapi.yml",
-    "bayou-energy-intervals-api-openapi.yml",
-    "bayou-energy-utilities-api-openapi.yml"
+    "_original/bayou-energy-openapi.yml"
   ],
   "outputs": [
     "bayou-energy-bills-api-openapi.yml",
@@ -15,6 +12,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "bayou-energy-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "bayou-energy-openapi.yml: declared missing tag: Bills",
+    "bayou-energy-openapi.yml: declared missing tag: Customers",
+    "bayou-energy-openapi.yml: declared missing tag: Intervals",
+    "bayou-energy-openapi.yml: declared missing tag: Utilities",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "bayou-energy-bills-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bayou-energy-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bayou-energy-intervals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bayou-energy-utilities-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Bayou Energy Bills API
   description: REST API for collecting utility account, bill, and interval meter data on behalf of customers. Create a customer, have them connect their utility credentials through a hosted onboarding link, then retrieve bills and interval usage data. Authentication uses HTTP Basic with your API key as the username and an empty password.
@@ -106,22 +106,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/Bill'
 components:
-  parameters:
-    CustomerId:
-      name: id
-      in: path
-      required: true
-      description: The customer identifier.
-      schema:
-        type: integer
-    BillId:
-      name: id
-      in: path
-      required: true
-      description: The bill identifier.
-      schema:
-        type: integer
   schemas:
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
     Meter:
       type: object
       properties:
@@ -171,19 +169,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Meter'
-    Address:
-      type: object
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
+  parameters:
+    BillId:
+      name: id
+      in: path
+      required: true
+      description: The bill identifier.
+      schema:
+        type: integer
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      description: The customer identifier.
+      schema:
+        type: integer
   securitySchemes:
     basicAuth:
       type: http
