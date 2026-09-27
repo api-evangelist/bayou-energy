@@ -32,20 +32,6 @@ paths:
                 $ref: '#/components/schemas/IntervalData'
 components:
   schemas:
-    Interval:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date-time
-          description: Start timestamp of the interval.
-        end:
-          type: string
-          format: date-time
-          description: End timestamp of the interval.
-        net_consumption:
-          type: number
-          description: Net consumption recorded during the interval.
     IntervalData:
       type: object
       properties:
@@ -62,6 +48,20 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Interval'
+    Interval:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+          description: Start timestamp of the interval.
+        end:
+          type: string
+          format: date-time
+          description: End timestamp of the interval.
+        net_consumption:
+          type: number
+          description: Net consumption recorded during the interval.
   parameters:
     CustomerId:
       name: id

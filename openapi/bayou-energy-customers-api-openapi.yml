@@ -88,19 +88,6 @@ paths:
                 $ref: '#/components/schemas/Customer'
 components:
   schemas:
-    Address:
-      type: object
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
     UpdateCustomerRequest:
       type: object
       properties:
@@ -108,6 +95,18 @@ components:
           type: string
           format: email
           description: Updated email address for the customer.
+    CreateCustomerRequest:
+      type: object
+      required:
+      - utility
+      properties:
+        utility:
+          type: string
+          description: The utility identifier the customer will connect (e.g. speculoos_power for testing).
+        email:
+          type: string
+          format: email
+          description: Optional email address for the customer.
     Customer:
       type: object
       properties:
@@ -135,18 +134,19 @@ components:
           description: Whether initial interval discovery has completed.
         address:
           $ref: '#/components/schemas/Address'
-    CreateCustomerRequest:
+    Address:
       type: object
-      required:
-      - utility
       properties:
-        utility:
+        line1:
           type: string
-          description: The utility identifier the customer will connect (e.g. speculoos_power for testing).
-        email:
+        line2:
           type: string
-          format: email
-          description: Optional email address for the customer.
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
   parameters:
     CustomerId:
       name: id
