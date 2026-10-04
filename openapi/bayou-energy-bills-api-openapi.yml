@@ -106,6 +106,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/Bill'
 components:
+  parameters:
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      description: The customer identifier.
+      schema:
+        type: integer
+    BillId:
+      name: id
+      in: path
+      required: true
+      description: The bill identifier.
+      schema:
+        type: integer
   schemas:
     Address:
       type: object
@@ -120,27 +135,6 @@ components:
           type: string
         zip:
           type: string
-    Meter:
-      type: object
-      properties:
-        id:
-          type: integer
-        type:
-          type: string
-          description: Meter type, e.g. electric or gas.
-        billing_period_from:
-          type: string
-          format: date
-        billing_period_to:
-          type: string
-          format: date
-        consumption:
-          type: number
-          description: Consumption for the billing period.
-        tariff:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
     Bill:
       type: object
       properties:
@@ -169,21 +163,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Meter'
-  parameters:
-    BillId:
-      name: id
-      in: path
-      required: true
-      description: The bill identifier.
-      schema:
-        type: integer
-    CustomerId:
-      name: id
-      in: path
-      required: true
-      description: The customer identifier.
-      schema:
-        type: integer
+    Meter:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+          description: Meter type, e.g. electric or gas.
+        billing_period_from:
+          type: string
+          format: date
+        billing_period_to:
+          type: string
+          format: date
+        consumption:
+          type: number
+          description: Consumption for the billing period.
+        tariff:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
   securitySchemes:
     basicAuth:
       type: http
