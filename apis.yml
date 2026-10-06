@@ -45,7 +45,7 @@ tags:
 - Metering
 - Utilities
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: bayou-energy:bayou-energy-bills-api
@@ -129,6 +129,8 @@ apis:
   - type: Documentation
     url: https://docs.bayou.energy/reference
 common:
+- url: https://blog.bayou.energy/feed/
+  type: BlogRSS
 - type: AgenticAccess
   url: agentic-access/bayou-energy-agentic-access.yml
 - type: DomainSecurity
