@@ -106,35 +106,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Bill'
 components:
-  parameters:
-    CustomerId:
-      name: id
-      in: path
-      required: true
-      description: The customer identifier.
-      schema:
-        type: integer
-    BillId:
-      name: id
-      in: path
-      required: true
-      description: The bill identifier.
-      schema:
-        type: integer
   schemas:
-    Address:
+    Meter:
       type: object
       properties:
-        line1:
+        id:
+          type: integer
+        type:
           type: string
-        line2:
+          description: Meter type, e.g. electric or gas.
+        billing_period_from:
           type: string
-        city:
+          format: date
+        billing_period_to:
           type: string
-        state:
+          format: date
+        consumption:
+          type: number
+          description: Consumption for the billing period.
+        tariff:
           type: string
-        zip:
-          type: string
+        address:
+          $ref: '#/components/schemas/Address'
     Bill:
       type: object
       properties:
@@ -163,27 +156,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Meter'
-    Meter:
+    Address:
       type: object
       properties:
-        id:
-          type: integer
-        type:
+        line1:
           type: string
-          description: Meter type, e.g. electric or gas.
-        billing_period_from:
+        line2:
           type: string
-          format: date
-        billing_period_to:
+        city:
           type: string
-          format: date
-        consumption:
-          type: number
-          description: Consumption for the billing period.
-        tariff:
+        state:
           type: string
-        address:
-          $ref: '#/components/schemas/Address'
+        zip:
+          type: string
+  parameters:
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      description: The customer identifier.
+      schema:
+        type: integer
+    BillId:
+      name: id
+      in: path
+      required: true
+      description: The bill identifier.
+      schema:
+        type: integer
   securitySchemes:
     basicAuth:
       type: http
