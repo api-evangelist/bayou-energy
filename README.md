@@ -1,4 +1,4 @@
-# Bayou Energy (bayou-energy)
+# Bayou Energy
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,141 +66,121 @@
 
 Bayou Energy provides a utility-bill and usage-data API that lets companies collect their customers' utility account, bill, and interval meter data from US utilities. Customers link their utility credentials through a hosted onboarding flow, and Bayou continuously fetches the full bill and interval history, exposing it through a REST API secured with HTTP Basic authentication.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bayou-energy/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bayou-energy/refs/heads/main/apis.yml)
+**Areas:** Utility Data · Energy · Utility Bills · Interval Data · Metering · Utilities
 
-## Tags
+## Bayou Energy on APIs.io
 
-- Utility Data
-- Energy
-- Utility Bills
-- Interval Data
-- Metering
+Everything profiled for Bayou Energy is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bayou-energy/](https://apis.io/providers/bayou-energy/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Bayou Energy Bills API](https://apis.io/apis/bayou-energy/bayou-energy-bills-api/) — The Bills API from Bayou Energy — 4 operation(s) for bills.
+- [Bayou Energy Customers API](https://apis.io/apis/bayou-energy/bayou-energy-customers-api/) — The Customers API from Bayou Energy — 2 operation(s) for customers.
+- [Bayou Energy Intervals API](https://apis.io/apis/bayou-energy/bayou-energy-intervals-api/) — The Intervals API from Bayou Energy — 1 operation(s) for intervals.
+- [Bayou Energy Utilities API](https://apis.io/apis/bayou-energy/bayou-energy-utilities-api/) — The Utilities API from Bayou Energy — 2 operation(s) for utilities.
 
-## APIs
+### Published properties
 
-### Bayou Energy Customers API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create and manage customers, generate a hosted onboarding link for the customer to connect their utility credentials, and poll customer status fields such as has_filled_credentials, bills_are_ready, and intervals_are_ready.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.bayou.energy/reference](https://docs.bayou.energy/reference)
-- **Base URL:** `https://bayou.energy/api/v2`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Bayou Energy Agentic Access](https://apis.io/agentic-access/bayou-energy/bayou-energy-agentic-access/)
 
-- Customers
-- Connections
-- Credentials
-- Onboarding
+#### Collections (5)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.bayou.energy/docs/quickstart)
-- [API Reference](https://docs.bayou.energy/reference)
-- [OpenAPI](openapi/bayou-energy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bayou-energy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bayou-energy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Bayou Energy API](https://apis.io/collections/bayou-energy/open-bayou-energy/)
+- [Bayou Energy Bills API](https://apis.io/collections/bayou-energy/open-bayou-energy-bills-api/)
+- [Bayou Energy Bills Customers API](https://apis.io/collections/bayou-energy/open-bayou-energy-customers-api/)
+- [Bayou Energy Bills Intervals API](https://apis.io/collections/bayou-energy/open-bayou-energy-intervals-api/)
+- [Bayou Energy Bills Utilities API](https://apis.io/collections/bayou-energy/open-bayou-energy-utilities-api/)
 
-### Bayou Energy Bills API
+#### Security (2)
 
-Retrieve a customer's utility bills with account numbers, meters, tariffs, billing periods, consumption, and itemized delivery and supply charges; upload, update, and unlock bill data.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.bayou.energy/docs/data-provided-bills](https://docs.bayou.energy/docs/data-provided-bills)
-- **Base URL:** `https://bayou.energy/api/v2`
+- [Bayou Energy Authentication](https://apis.io/security/bayou-energy/bayou-energy-authentication/)
+- [Bayou Energy Domain Security](https://apis.io/security/bayou-energy/bayou-energy-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Bills
-- Utility Bills
-- Charges
-- Tariffs
+Published plans, tiers and prices.
 
-#### Properties
+- [Bayou Energy Plans Pricing](https://apis.io/plans/bayou-energy/bayou-energy-plans-pricing/)
 
-- [Documentation](https://docs.bayou.energy/docs/data-provided-bills)
-- [API Reference](https://docs.bayou.energy/reference)
-- [OpenAPI](openapi/bayou-energy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bayou-energy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bayou-energy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Bayou Energy Intervals API
+Published request limits.
 
-Retrieve a customer's interval meter data organized by meter, returned at 15-minute, hourly, or daily granularity depending on the utility, covering the customer's available usage history.
+- [Bayou Energy Rate Limits](https://apis.io/rate-limits/bayou-energy/bayou-energy-rate-limits/)
 
-- **Human URL:** [https://docs.bayou.energy/docs/interval-data-availability](https://docs.bayou.energy/docs/interval-data-availability)
-- **Base URL:** `https://bayou.energy/api/v2`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Intervals
-- Usage
-- Interval Data
-- Meters
+- [Bayou Energy Finops](https://apis.io/finops/bayou-energy/bayou-energy-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.bayou.energy/docs/interval-data-availability)
-- [API Reference](https://docs.bayou.energy/reference)
-- [OpenAPI](openapi/bayou-energy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bayou-energy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bayou-energy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Bayou Energy Meters API
-
-Surface meter details across a customer's bills and intervals, and look up supported utilities and their coverage, availability, and performance through the utilities endpoints.
-
-- **Human URL:** [https://www.bayou.energy/utilities](https://www.bayou.energy/utilities)
-- **Base URL:** `https://bayou.energy/api/v2`
-
-#### Tags
-
-- Meters
-- Utilities
-- Coverage
-
-#### Properties
-
-- [Documentation](https://docs.bayou.energy/reference)
-- [API Reference](https://docs.bayou.energy/reference)
-- [OpenAPI](openapi/bayou-energy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bayou-energy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bayou-energy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Bayou Energy Webhooks API
-
-Subscribe to event notifications - customer_has_filled_credentials, customer_must_reauthenticate, new_bill, updated_bill, new_unparsed_bill, bills_ready, and intervals_ready - so production integrations react to data availability instead of polling.
-
-- **Human URL:** [https://docs.bayou.energy/reference](https://docs.bayou.energy/reference)
-- **Base URL:** `https://bayou.energy/api/v2`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://docs.bayou.energy/reference)
-- [API Reference](https://docs.bayou.energy/reference)
-- [OpenAPI](openapi/bayou-energy-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bayou-energy.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bayou-energy.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/bayouenergy)
 - [Website](https://www.bayou.energy/)
 - [Documentation](https://docs.bayou.energy/)
-- [Plans](plans/bayou-energy-plans-pricing.yml)
-- [Rate Limits](rate-limits/bayou-energy-rate-limits.yml)
-- [Fin Ops](finops/bayou-energy-finops.yml)
+- [Blog](https://blog.bayou.energy/feed)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 23.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.8** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bayou-energy/](https://apis.io/providers/bayou-energy/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Bayou Energy: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bayou-energy/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
